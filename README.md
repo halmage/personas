@@ -1,0 +1,2 @@
+# galery
+almacenamiento de imagenes
