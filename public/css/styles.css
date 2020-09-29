@@ -1,0 +1,133 @@
+/* Importando estilos de la carpeta utilitiles */
+
+/*  Material Design color palette (full) downloaded from
+ * *  http://htmlcolorcodes.com/color-charts/
+ * *
+ * *  Check out our powerful color picker
+ * *  http://htmlcolorcodes.com/color-picker/
+ * *
+ * *  Want to learn more about colors in SCSS?
+ * *  http://htmlcolorcodes.com/tutorials/
+ * *
+ * *  - - - - - - - - - - - - - - - - - - 
+ * *  Credits:
+ * *
+ * *  Original color palette by
+ * *  https://www.google.com/design/spec/style/color.html
+ * *
+ * *  - - - - - - - - - - - - - - - - - -
+ * *  How to use:
+ * *  
+ * *  Include this file with your other .scss files:
+ * *
+ * *  @import "material_colors_full"
+ * *  
+ * *  and use the color variables in your stylesheets:
+ * *	
+ * *  .class {
+ * *    color: $red-500;
+ * *  }
+ * *
+ * *  - - - - - - - - - - - - - - - - - -
+ * *  Note:
+ * *
+ * *  $color and $color-500 are the same, simply there
+ * *  for your convenience.
+ * *
+ * *  Variables with numbers prefixed by 'a' are accent colors
+ * */
+
+/* Red */
+
+/* Pink */
+
+/* Purple */
+
+/* Deep Purple */
+
+/* Indigo */
+
+/* Blue */
+
+/* Light Blue */
+
+/* Cyan */
+
+/* Teal */
+
+/* Green */
+
+/* Light Green */
+
+/* Lime */
+
+/* Yellow */
+
+/* Amber */
+
+/* Orange */
+
+/* Deep Orange */
+
+/* Brown */
+
+/* Grey */
+
+/* Blue Grey */
+
+/* White / Black */
+
+/*  Want more? Check our our other color palettes at
+ * *  http://htmlcolorcodes.com/color-charts/
+ * */
+
+/* Importando estilos de la carpeta base */
+
+/* Importando estilos de la carpeta components */
+
+.card-header-style {
+  background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);
+}
+
+/* Importando estilos de la carpeta layout */
+
+body {
+  background: #fafafa;
+  font-family: Cambria;
+}
+
+header {
+  /* estilos del header */
+  background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);
+}
+
+header nav {
+  /* estilos del nav */
+}
+
+header nav ul {
+  /* estilos del ul */
+}
+
+header nav ul li {
+  /* estilos del li */
+}
+
+header nav ul li a {
+  /* estilos del a */
+  color: white;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  background: #e8eaf6;
+  border-radius: 10px;
+  transition: 1.5s;
+}
+
+/* Importando estilos de la carpeta views */
+
+/* Importando estilos de la carpeta themes */
+
+/* Importando estilos de la carpeta vendors */
+
