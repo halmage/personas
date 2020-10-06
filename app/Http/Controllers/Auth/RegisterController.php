@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+/* Importando modelos */
+use App\User;
+use App\Models\Question;
 
 class RegisterController extends Controller
 {
@@ -42,6 +45,16 @@ class RegisterController extends Controller
     }
 
     /**
+    * Show the application registration form.
+    *
+    * @return \Illuminate\View\View
+    */
+    public function showRegistrationForm()
+    {           
+        return view('auth.register',['questions' => Question::all()]);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -54,6 +67,12 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'question1' => ['required', 'string'],
+            'question2' => ['required', 'string'],
+            'question3' => ['required', 'string'],
+            'answer1' => ['required', 'string', 'max:255'],
+            'answer2' => ['required', 'string', 'max:255'],
+            'answer3' => ['required', 'string', 'max:255']
         ]);
     }
 
@@ -70,6 +89,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'question1' => $data['question1'],
+            'question2' => $data['question2'],
+            'question3' => $data['question3'],
+            'answer1' => $data['answer1'],
+            'answer2' => $data['answer2'],
+            'answer3' => $data['answer3']
         ]);
     }
 }
