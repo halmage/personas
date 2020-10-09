@@ -34,8 +34,10 @@ class ForgotPasswordController extends Controller
 
     public function sendResetPassword(Request $request){
         $user = User::where('identify',$request->input('identify'))->first();
+        $question = $user->answer;
+        dd($question);
         if($user){
-            dd($user);
+            return view('auth.passwords.reset');
         }
     }
 

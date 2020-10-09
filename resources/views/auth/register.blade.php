@@ -3,7 +3,7 @@
 @section('content')
     @component('components._card-xl')
         @slot('title','Registrarse')
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" novalidate>
             @csrf
             <div class="row">
                 <div class="form-group col-md-4">
