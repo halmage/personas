@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+
+use App\User;
 
 class ResetPasswordController extends Controller
 {
@@ -27,4 +30,23 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Display the password reset view for the given token.
+     *
+     * If no token is present, display the link request form.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    
+    public function confirmAnswers(Request $request, User $user)
+    {
+        dd($user);
+    }
+
+    public function showResetForm(Request $request, User $user)
+    {
+        return redirect()->route('errors.password-reset');
+    }
+
 }

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 /* Llamando los modelos */
 use App\User;
+use App\Models\Question;
 
 class ForgotPasswordController extends Controller
 {
@@ -34,12 +35,12 @@ class ForgotPasswordController extends Controller
 
     public function sendResetPassword(Request $request){
         $user = User::where('identify',$request->input('identify'))->first();
-        $question = $user->answer;
-        dd($question);
         if($user){
-            return view('auth.passwords.reset');
+            return view('auth.passwords.reset',['user' =>$user,
+                                                'question1' =>Question::find($user->answer->question1),
+                                                'question2' =>Question::find($user->answer->question2),
+                                                'question3' =>Question::find($user->answer->question3)
+                                                ]);
         }
     }
-
-    use SendsPasswordResetEmails;
 }
