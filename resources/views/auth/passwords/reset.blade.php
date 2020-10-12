@@ -1,15 +1,23 @@
 @extends('layouts.app')
 @section('content')
     @component('components._card')
-        @slot('title','preguntas de seguridad')
+        @slot('title','preguntas de seguridad ')
+            <div class="container shadow mt-1 mb-4 lead text-uppercase d-flex justify-content-lg-between">
+                <p>
+                    usuario: {{ $user->name }} {{ $user->last_name }}                    
+                </p>
+                <p>
+                    cedula: {{ $user->identify }}
+                </p>
+            </div>
             <form action="{{ route('password.confirm-answers',$user) }}" method="Get">
                 <div class="form-group row">
-                    <label for="question1" class="col-md-4 col-form-label text-md-right">¿{{ $question1->question }}?</label>
+                    <label for="answer1" class="col-md-4 col-form-label text-md-right">¿{{ $question1->question }}?</label>
 
                     <div class="col-md-6">
-                        <input id="question1" type="text" class="form-control @error('question1') is-invalid @enderror" name="question1" required autocomplete="question1" autofocus>
+                        <input id="answer1" type="text" class="form-control @error('answer1') is-invalid @enderror" name="answer1" required autocomplete="answer1" autofocus>
 
-                        @error('question1')
+                        @error('answer1')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -17,12 +25,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="question2" class="col-md-4 col-form-label text-md-right">¿{{ $question2->question }}?</label>
+                    <label for="answer2" class="col-md-4 col-form-label text-md-right">¿{{ $question2->question }}?</label>
 
                     <div class="col-md-6">
-                        <input id="question2" type="text" class="form-control @error('question2') is-invalid @enderror" name="question2" required autocomplete="question2" autofocus>
+                        <input id="answer2" type="text" class="form-control @error('answer2') is-invalid @enderror" name="answer2" required autocomplete="answer2" autofocus>
 
-                        @error('question2')
+                        @error('answer2')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -30,12 +38,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="question3" class="col-md-4 col-form-label text-md-right">¿{{ $question3->question }}?</label>
+                    <label for="answer3" class="col-md-4 col-form-label text-md-right">¿{{ $question3->question }}?</label>
 
                     <div class="col-md-6">
-                        <input id="question3" type="text" class="form-control @error('question3') is-invalid @enderror" name="question3" required autocomplete="question3" autofocus>
+                        <input id="answer3" type="text" class="form-control @error('answer3') is-invalid @enderror" name="answer3" required autocomplete="answer3" autofocus>
 
-                        @error('question3')
+                        @error('answer3')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

@@ -41,7 +41,10 @@ class ResetPasswordController extends Controller
     
     public function confirmAnswers(Request $request, User $user)
     {
-        dd($user);
+        dd($user->answer->where(['answer1'=>$request->input('answer1'),
+                                 'answer2'=>$request->input('answer2'),
+                                 'answer3'=>$request->input('answer3'),
+                                ])->first());
     }
 
     public function showResetForm(Request $request, User $user)

@@ -16,10 +16,20 @@ class UserSeeder extends Seeder
     {
         User::create([
         	'id' => 1,
-            'identify' => 24130237,
+            'identify' => "24130237",
             'name' => 'hugo',
+            'last_name' => 'zorrilla',
             'answer_id' => 1,
             'email' => 'hugo_zorrilla@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
+        User::create([
+            'id' => 2,
+            'identify' => "24130238",
+            'name' => 'halmage',
+            'last_name' => 'cesilia',
+            'answer_id' => 2,
+            'email' => 'halmage@gmail.com',
             'password' => bcrypt('12345678')
         ]);
     }

@@ -23,5 +23,15 @@ class AnswerSeeder extends Seeder
             'answer2' => 'como',              
             'answer3' => 'estas'
     	]);
+        Answer::create([
+            'id' => 2,
+            'user_id' => 2,
+            'question1' => 1,            
+            'question2' => 3,            
+            'question3' => 2,            
+            'answer1' => 'rosa',              
+            'answer2' => 'ferrari',              
+            'answer3' => 'dario'
+        ]);
     }
 }
