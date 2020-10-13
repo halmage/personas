@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class ErrorsController extends Controller
 {
-    public function passwordReset(){
-    	return view('errors.reset-password');
+    public function passwordReset($user){    	    	
+    	return view('errors.reset-password',['user' => User::find($user)]);
     }
 }

@@ -2,6 +2,6 @@
 @section('content')
 	@component('components._card-error')
 		@slot('title','error de preguntas')
-		<h1>hola mundo</h1>
+		<h1>{{ $user->name }}</h1>
 	@endcomponent
 @endsection
