@@ -57,7 +57,7 @@ class ResetPasswordController extends Controller
         return view('auth.passwords.show-reset-form',['user' => User::find($user)]);
     }
 
-    public function passwordRestored(Request $request,User $user){
+    public function passwordRestoredValidator($request){
         $validator = Validator::make($request->all(), [
             'password' => ['required', 'string', 'min:8', 'confirmed']            
         ]);
@@ -65,8 +65,12 @@ class ResetPasswordController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         } // Fin de if
+    }
 
-        dd('hola mundo');
+    public function passwordRestored(Request $request,User $user){
+        self::passwordRestoredValidator($request);
+        $user->update(['password' => bcrypt($request->input('password'))]); 
+        return redirect()->route('messages.password-reset',['user' => $user]);
     }
 
 }
