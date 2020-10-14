@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 use App\User;
@@ -46,14 +47,26 @@ class ResetPasswordController extends Controller
                                  'answer3'=>$request->input('answer3'),
                                 ])->first();
         if($answer){
-            dd('hola mundo');   
+            return redirect()->route('password.show-reset-form',$user);   
         }
         return redirect()->route('errors.password-reset',$user);
     }
 
-    public function showResetForm(Request $request, User $user)
-    {
-        return redirect()->route('errors.password-reset');
+    public function showResetForm($user)
+    {        
+        return view('auth.passwords.show-reset-form',['user' => User::find($user)]);
+    }
+
+    public function passwordRestored(Request $request,User $user){
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', 'string', 'min:8', 'confirmed']            
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        } // Fin de if
+
+        dd('hola mundo');
     }
 
 }

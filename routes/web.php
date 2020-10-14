@@ -25,9 +25,13 @@ Route::post('register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+
 Route::post('password/clave', 'Auth\ForgotPasswordController@sendResetPassword')->name('password.clave');
+
 Route::get('password/reset/confirmar-respuestas/{user}', 'Auth\ResetPasswordController@confirmAnswers')->name('password.confirm-answers');
 
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('password/show-reset-form/{user}', 'Auth\ResetPasswordController@showResetForm')->name('password.show-reset-form');
+
+Route::post('password/clave-restablacida/{user}','Auth\ResetPasswordController@passwordRestored')->name('password.password-restored');
 
 Route::get('/home', 'HomeController@index')->name('home');
