@@ -49,7 +49,7 @@ class ResetPasswordController extends Controller
         if($answer){
             return redirect()->route('password.show-reset-form',$user);   
         }
-        return redirect()->route('errors.password-reset',$user);
+        return redirect()->route('errors.question-segurity',$user);
     }
 
     public function showResetForm($user)

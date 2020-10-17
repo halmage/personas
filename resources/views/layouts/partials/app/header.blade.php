@@ -36,7 +36,7 @@
                                 <a class="dropdown-item" href="{{ route('config.password-reset') }}">
                                     {{ __('Cambiar Contraseña') }}
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('config.reset-data') }}">
                                     {{ __('Cambiar Datos Personales') }}
                                 </a>
                                 <a class="dropdown-item" href="#">
