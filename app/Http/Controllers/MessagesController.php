@@ -8,7 +8,7 @@ use App\User;
 
 class MessagesController extends Controller
 {
-    public function passwordReset(User $user){
-    	return view('messages.auth.password-reset', ['user' => $user]);
+    public function changeData(){
+    	return view('messages.auth.change-data');
     }
 }

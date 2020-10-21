@@ -16,7 +16,7 @@ class ErrorsController extends Controller
     }
 
     /* Error de restablecimiento de contraseña */
-    public function passwordReset(User $user){
-    	return view('errors.reset-password',['user' => Auth::user()]);
+    public function changeData(){
+    	return view('errors.change-data');
     }
 }

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Config;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Helper;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+
+/* Importando request */
+use App\Http\Requests\Config\ResetDataRequest;
 
 class ResetDataController extends Controller
 {
@@ -13,17 +17,15 @@ class ResetDataController extends Controller
     	return view('config.reset-data',['user' => Auth::user()]);
     }
 
-    public function resetDataRestored(Request $request){
-    	$validator = Validator::make($request->all(), [
-            'password_old' => 'required|string|min:8', 
-			'identify' => 'required|string|min:8|unique:users,identify,'.Auth::user()->id,
-			'name' => 'required|string|min:8',
-			'last_name' => 'required|string|min:8',
-			'email' => 'required|string|min:8|unique:users,email,'.Auth::user()->id           
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
-        } // Fin de if
+    public function resetDataRestored(ResetDataRequest $request){
+        if(Helper::verifyPassword($request)){
+            auth::user()->update([ 'identify' => $request->input('identify'),
+                                   'name' => $request->input('name'),
+                                   'last_name' => $request->input('last_name'),
+                                   'email' => $request->input('email')
+                                 ]);
+            return redirect()->route('messages.change-data');
+        }
+        return redirect()->route('errors.change-data');
     }
 }

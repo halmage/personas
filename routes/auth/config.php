@@ -15,3 +15,10 @@ Route::get('/reset-data', 'Config\ResetDataController@resetData')
 
 Route::post('/reset-data-restored','Config\ResetDataController@resetDataRestored')
 	   ->name('config.reset-data-restored');
+
+/* configuración de cambiar datos */
+Route::get('/reset-question', 'Config\ResetQuestionController@resetQuestion')
+	   ->name('config.reset-question');
+
+Route::post('/reset-quetion-restored','Config\ResetQuestionController@resetQuestionRestored')
+	   ->name('config.reset-question-restored');
