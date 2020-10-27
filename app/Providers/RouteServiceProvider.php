@@ -51,6 +51,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapMessagesRoutes();
         
         $this->mapConfigRoutes();
+        
+        $this->mapAdminRoutes();
 
         //
     }
@@ -127,5 +129,20 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/auth/config.php'));
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::prefix('admin')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/admin/admin.php'));
     }
 }

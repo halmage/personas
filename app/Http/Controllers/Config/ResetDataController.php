@@ -11,19 +11,23 @@ use Illuminate\Support\Facades\Validator;
 /* Importando request */
 use App\Http\Requests\Config\ResetDataRequest;
 
+/* Importando repositories */
+use App\Repositories\Config\ConfigRepositories;
+
 class ResetDataController extends Controller
 {
+    public function __construct(ConfigRepositories $user)
+    {
+        $this->user = $user;
+    }
+
     public function resetData(){
-    	return view('config.reset-data',['user' => Auth::user()]);
+    	return view('config.reset-data',['user' => $this->user->findUser()]);
     }
 
     public function resetDataRestored(ResetDataRequest $request){
-        if(Helper::verifyPassword($request)){
-            auth::user()->update([ 'identify' => $request->input('identify'),
-                                   'name' => $request->input('name'),
-                                   'last_name' => $request->input('last_name'),
-                                   'email' => $request->input('email')
-                                 ]);
+        if( Helper::verifyPassword($request) ){
+            $this->user->updatedData($request);
             return redirect()->route('messages.change-data');
         }
         return redirect()->route('errors.change-data');

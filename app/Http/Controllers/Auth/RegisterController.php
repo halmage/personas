@@ -11,9 +11,11 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+/* Importando repositorio */
+use App\Repositories\Auth\AuthRepositories;
+
 /* Importando modelos */
 use App\User;
-use App\Models\Answer;
 use App\Models\Question;
 
 class RegisterController extends Controller
@@ -35,16 +37,16 @@ class RegisterController extends Controller
      * Where to redirect users after registration.
      *
      * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+     */ protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AuthRepositories $user)
     {
+        $this->user = $user;
         $this->middleware('guest');
     }
 
@@ -89,13 +91,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {        
-        return User::create([
-            'identify' => $data['identify'],
-            'name' => $data['name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
+        return $this->user->createdUser($data);
     }
 
     /**
@@ -140,17 +136,6 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {        
-        $answer = Answer::create([
-            'user_id' => $user->id,
-            'question1' => $request->question1,
-            'question2' => $request->question2,
-            'question3' => $request->question3,
-            'answer1' => $request->answer1,
-            'answer2' => $request->answer2,
-            'answer3' => $request->answer3
-        ]);
-
-        $user->answer_id = $answer->id;
-        $user->save();
+         $this->user->createdAnswers($request,$user);       
     }
 }

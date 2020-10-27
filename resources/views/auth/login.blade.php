@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     @component('components._card')
-        @slot('title','Iniciar sessión')
+        @slot('title','iniciar sessión')
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group row">
