@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 /* Importando modelos */
 use App\User;
 use App\Models\Answer;
+use Spatie\Permission\Models\Role;
 
 class AuthRepositories implements AuthInterface{
 	
@@ -19,13 +20,15 @@ class AuthRepositories implements AuthInterface{
 
 	/* Registrando usuarios */
 	public function createdUser($data){
-		return User::create([
-            'identify' => $data['identify'],
-            'name' => $data['name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
+		$user = new User();
+		$user->identify = $data['identify'];
+		$user->name = $data['name'];
+		$user->last_name = $data['last_name'];
+		$user->email = $data['email'];
+		$user->password = bcrypt($data['password']);
+		$user->save();
+		$user->assignRole('user');
+		return $user;
 	}
 
 	/* Guardando respuestas del usuario */
