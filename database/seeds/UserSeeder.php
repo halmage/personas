@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 /* Importando modelos */
 use App\User;
@@ -14,23 +15,20 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-        	'id' => 1,
-            'identify' => "24130237",
-            'name' => 'hugo',
-            'last_name' => 'zorrilla',
-            'answer_id' => 1,
-            'email' => 'hugo_zorrilla@gmail.com',
-            'password' => bcrypt('12345678')
-        ]);
-        User::create([
-            'id' => 2,
-            'identify' => "24130238",
-            'name' => 'halmage',
-            'last_name' => 'cesilia',
-            'answer_id' => 2,
-            'email' => 'halmage@gmail.com',
-            'password' => bcrypt('12345678')
-        ]);
+        Role::truncate();
+
+        $adminRole = Role::create(['name' => 'admin']);
+        $userRole = Role::create(['name' => 'user']);
+
+        $admin = new User();
+        $admin->identify = '24130237'; 
+        $admin->name = 'Hugo'; 
+        $admin->last_name = 'Zorrilla'; 
+        $admin->email = 'hugo_zorrrilla@hotmail.com'; 
+        $admin->password = bcrypt('12345678'); 
+        $admin->save();
+        $admin->assignRole($adminRole);
+
+        factory(User::class,10)->create();
     }
 }
