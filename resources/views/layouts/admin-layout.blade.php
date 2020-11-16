@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  {{-- Estilos propios --}}
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">  
 <div class="wrapper">

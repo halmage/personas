@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin-layout')
 
 @section('content')
-    @component('components._card-xl')
-        @slot('title','Registrarse')
-        <form method="POST" action="{{ route('register') }}" novalidate>
+	@component('components._card-xl')
+		@slot('title', 'crear usuario')
+		 <form method="POST" action="{{ route('user.store') }}" novalidate enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="form-group col-md-4">
@@ -136,16 +136,29 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>                
+                </div>    
+
+                <div class="form-group col-md-4">
+                    <label for="avatar">{{ __('Ingrese avatar') }}</label>
+                    <input id="avatar" type="file" class="@error('avatar') is-invalid @enderror" name="avatar" required autocomplete="avatar">
+                    @error('avatar')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>            
             </div>
             
             <div class="form-group">
-                <div class="d-flex justify-content-center">                    
+                <div class="d-flex justify-content-center">
+                	<a href="{{ route('user.index') }}" class="btn btn-lg btn-dark mx-2">
+                		{{ __('Cancelar') }}
+                	</a>
                     <button type="submit" class="btn btn-lg btn-primary">
                         {{ __('Register') }}
                     </button>
                 </div>
             </div>
         </form>               
-    @endcomponent
+	@endcomponent
 @endsection

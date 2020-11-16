@@ -89,6 +89,11 @@
   background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);
 }
 
+.image-avatar {
+  width: 200px;
+  height: 200px;
+}
+
 /* Importando estilos de la carpeta layout */
 
 body {
