@@ -11,4 +11,10 @@ Route::group(['prefix' => 'user'],function(){
 	Route::post('/store', 'Admin\UserController@store')->name('user.store');
 	/* visualizar perfil del usuario */
 	Route::get('/show/{user}', 'Admin\UserController@show')->name('user.show');
+	/* Eliminar usuario */
+	Route::delete('/destroy/{user}','Admin\UserController@destroy')->name('user.destroy');
+	/* Redireccionar a la pagina de editar usuario */
+	Route::get('/edit/{user}','Admin\UserController@edit')->name('user.edit');
+	/* Actualizar usuario */
+	Route::put('/updated/{user}', 'Admin\UserController@updated')->name('user.updated');
 });

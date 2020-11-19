@@ -26,13 +26,12 @@
 				      <td>{{ $user->roles()->pluck('name')->implode(', ') }}</td>
 				      <td>
 				      	<a href="{{ route('user.show',$user) }}" class="btn btn-primary"><li class="fas fa-eye"></li></a>
-				      	<a href="#" class="btn btn-warning"><li class="fas fa-edit"></li></a>
-				      	<a href="#" class="btn btn-danger"><li class="fas fa-trash"></li></a>
+				      	<a href="{{ route('user.edit',$user) }}" class="btn btn-warning"><li class="fas fa-edit"></li></a>
+				      	@include('admin.user.partials.modal_delete')
 				      </td>
 				    </tr>
 				@endforeach
 		  </tbody>
 		</table>
 	@endcomponent
-
 @endsection

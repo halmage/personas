@@ -41,4 +41,19 @@ class UserController extends Controller
     	$this->user->createdUser($request);
     	return redirect()->route('user.index');
     }
+
+    public function destroy(user $user){
+        $user->delete();
+        return redirect()->route('user.index');
+    }
+
+    public function edit(user $user){
+        return view('admin.user.edit',['user' => $user, 
+                                       'questions' => Question::all()
+                                      ]);
+    }
+
+    public function updated(user $user, Request $request){
+        dd($request);
+    }
 }

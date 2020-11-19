@@ -3,6 +3,7 @@
 namespace App;
 
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,6 +38,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * [boot description]
+     */
+    protected static function boot()
+    {  
+        parent::boot();
+
+        static::deleting(function($user)
+        {            
+            $image_path = str_replace('storage', 'public', $user->avatar);
+            Storage::delete($image_path);
+        });
+    } 
 
     public function answer(){
         return  $this->hasOne('App\Models\Answer');
