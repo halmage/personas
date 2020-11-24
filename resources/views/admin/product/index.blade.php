@@ -1,0 +1,33 @@
+@extends('layouts.admin-layout')
+
+@section('content')
+	
+	@component('components._card-xl')
+		@slot('title','administración de productos')
+		<a href="{{ route('product.create') }}" class="btn btn-primary mb-2 float-right"> + crear producto</a>
+		<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Codigo</th>
+		      <th scope="col">Nombre</th>		      
+		      <th scope="col">opciones</th>		      
+		    </tr>
+		  </thead>
+		  <tbody>
+				@foreach($products as $product)
+				    <tr>
+				      <th scope="row">{{ $product->id }}</th>
+				      <td>{{ $product->code }}</td>
+				      <td>{{ $product->name }}</td>
+				      <td>
+				      	<a href="{{ route('product.show',$product) }}" class="btn btn-primary"><li class="fas fa-eye"></li></a>
+				      	<a href="#" class="btn btn-warning"><li class="fas fa-edit"></li></a>
+				      	<a href="#" class="btn btn-danger"><li class="fas fa-trash"></li></a>
+				      </td>
+				    </tr>
+				@endforeach
+		  </tbody>
+		</table>
+	@endcomponent
+@endsection

@@ -34,15 +34,15 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('user.index') }}" class="nav-link active">
+              <a href="{{ route('user.index') }}" class="nav-link  {{ Route::currentRouteName() == 'user.index' ? 'active' : '' }}">
                 <i class="fas fa-users nav-icon"></i>
                 <p>Usuarios</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="./index2.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Dashboard v2</p>
+              <a href="{{ route('product.index') }}" class="nav-link {{ Route::currentRouteName() == 'product.index' ? 'active' : '' }}">
+                <i class="fas fa-cubes nav-icon"></i>
+                <p>Productos</p>
               </a>
             </li>
             <li class="nav-item">

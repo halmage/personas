@@ -146,6 +146,15 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+                </div>
+
+                <div class="form-group col-md-4 offset-4">
+                    <label id="roles[]">Roles</label>
+                    <div class="w-100"></div>
+                    @foreach ($roles as $id => $name)
+                    <input type="checkbox" name="roles[]" value="{{ $id }}" {{ empty($user) ? '' : $user->roles()->pluck('id')->contains($id) ? 'checked' : '' }}> {{ $name }}
+                    <div class="w-100"></div>
+                    @endforeach
                 </div>            
             </div>
             

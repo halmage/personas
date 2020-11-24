@@ -34,7 +34,10 @@ class UserController extends Controller
     }
 
     public function create(){
-    	return view('admin.user.create',[ 'questions' => Question::all() ]);
+    	return view('admin.user.create',[ 
+                  'questions' => Question::all(), 
+                  'roles' => $this->user->allRoles()
+                 ]);
     }
 
     public function store(RegisterUserRequest $request){
@@ -49,11 +52,13 @@ class UserController extends Controller
 
     public function edit(user $user){
         return view('admin.user.edit',['user' => $user, 
-                                       'questions' => Question::all()
+                                       'questions' => Question::all(), 
+                                       'roles' => $this->user->allRoles()
                                       ]);
     }
 
     public function updated(user $user, Request $request){
-        dd($request);
+        $this->user->update($user,$request);
+        return redirect()->route('user.index');
     }
 }

@@ -1,0 +1,26 @@
+<?php
+
+namespace App\models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    protected $table = 'products';
+
+    protected $fillable = ['image','code','name']; 
+
+    /**
+    * [boot description]
+    */
+    protected static function boot()
+    {  
+        parent::boot();
+
+        static::deleting(function($product)
+        {            
+            $image_path = str_replace('storage', 'public', $product->image);
+            Storage::delete($image_path);
+        });
+    } 
+}

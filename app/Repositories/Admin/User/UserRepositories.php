@@ -46,9 +46,37 @@ class UserRepositories implements UserInterface{
 			'name' => $request->name,
 			'last_name' => $request->last_name,
 			'email' => $request->email,
-			'password' => $request->password
+			'password' => bcrypt($request->password)
 		]);
-		$user->assignRole('user');		
+		$user->roles()->attach($request->roles);		
 		self::createdAnswer($request,$user);
 	}
+
+	public function avatarUpdate($user,$request)
+    {
+        if (!empty($request->file('avatar'))) {
+            $avatar = Storage::url($request->file('avatar')->store('avatar','public')); 
+            $image_path = str_replace('storage', 'public', $user->avatar);
+            Storage::delete($image_path);
+        }else {
+            $avatar = $user->avatar;
+        }
+        return $avatar;
+    }
+
+    public function update($user,$request)
+    {
+        $user->update([
+        	'avatar' => self::avatarUpdate($user,$request),
+        	'identify' => $request->input('identify'),
+        	'name' => $request->input('name'),
+        	'last_name' => $request->input('last_name'),
+        	'email' => $request->input('email')
+        ]);
+        $user->roles()->sync($request->roles);
+    }
+
+    public function allRoles(){
+    	return Role::pluck('name','id');
+    }
 }
