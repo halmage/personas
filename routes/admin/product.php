@@ -12,9 +12,9 @@ Route::group(['prefix' => 'product'],function(){
 	/* visualizar perfil del usuario */
 	Route::get('/show/{product}', 'Admin\ProductController@show')->name('product.show');
 	/* Eliminar usuario */
-	Route::delete('/destroy/{user}','Admin\UserController@destroy')->name('user.destroy');
-	// /* Redireccionar a la pagina de editar usuario */
-	// Route::get('/edit/{user}','Admin\UserController@edit')->name('user.edit');
-	// /* Actualizar usuario */
-	// Route::put('/updated/{user}', 'Admin\UserController@updated')->name('user.updated');
+	Route::delete('/destroy/{product}','Admin\ProductController@destroy')->name('product.destroy');
+	/* Redireccionar a la pagina de editar usuario */
+	Route::get('/edit/{product}','Admin\ProductController@edit')->name('product.edit');
+	/* Actualizar usuario */
+	Route::put('/updated/{product}', 'Admin\ProductController@updated')->name('product.updated');
 });

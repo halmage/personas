@@ -22,8 +22,8 @@
 				      <td>{{ $product->name }}</td>
 				      <td>
 				      	<a href="{{ route('product.show',$product) }}" class="btn btn-primary"><li class="fas fa-eye"></li></a>
-				      	<a href="#" class="btn btn-warning"><li class="fas fa-edit"></li></a>
-				      	<a href="#" class="btn btn-danger"><li class="fas fa-trash"></li></a>
+				      	<a href="{{ route('product.edit',$product) }}" class="btn btn-warning"><li class="fas fa-edit"></li></a>
+				      	@include('admin.product.partials.modal_delete')
 				      </td>
 				    </tr>
 				@endforeach

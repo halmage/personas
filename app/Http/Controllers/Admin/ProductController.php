@@ -44,4 +44,13 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('product.index');
     }
+
+    public function edit(Product $product){
+        return view('admin.product.edit',['product' => $product]);
+    }
+
+    public function updated(Product $product, Request $request){
+        $this->product->updated($product,$request);
+        return redirect()->route('product.index');
+    }
 }
