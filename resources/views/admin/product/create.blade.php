@@ -42,7 +42,7 @@
             
             <div class="form-group">
                 <div class="d-flex justify-content-center">
-                	<a href="{{ route('user.index') }}" class="btn btn-lg btn-dark mx-2">
+                	<a href="{{ route('product.index') }}" class="btn btn-lg btn-dark mx-2">
                 		{{ __('Cancelar') }}
                 	</a>
                     <button type="submit" class="btn btn-lg btn-primary">

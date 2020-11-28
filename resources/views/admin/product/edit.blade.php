@@ -32,6 +32,9 @@
 
                 <div class="form-group col-md-4">
                     <label for="image">{{ __('Ingrese imagen') }}</label>
+                    <div class="w-100"></div> 
+                    <img src="{{ $product->image == null ? asset('img/warning/no-hay-foto.jpg') : 
+                             $product->image }}" class="mb-2 img-thumbnail" width="100" height="100">
                     <input id="image" type="file" class="@error('image') is-invalid @enderror" name="image" required autocomplete="image">
                     @error('image')
                         <span class="invalid-feedback" role="alert">
