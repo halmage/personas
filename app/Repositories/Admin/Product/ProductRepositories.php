@@ -29,10 +29,22 @@ class ProductRepositories implements ProductInterface{
 		]);
 	}
 
+	public function imageUpdate($product,$request)
+    {
+        if (!empty($request->file('image'))) {
+            $image = Storage::url($request->file('image')->store('product','public')); 
+            $image_path = str_replace('storage', 'public', $product->image);
+            Storage::delete($image_path);
+        }else {
+            $image = $product->image;
+        }
+        return $image;
+    }
+
 	/* Actualizando producto */
 	public function updated($product, $request){
 		$product->update([
-			'image' => self::imageStore($request),
+			'image' => self::imageUpdate($product,$request),
 			'code' => $request->code,
 			'name' => $request->name
 		]);

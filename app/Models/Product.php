@@ -24,4 +24,9 @@ class Product extends Model
             Storage::delete($image_path);
         });
     } 
+
+    public function tags()
+   {
+      return $this->belongsToMany('App\Models\Tag');
+   }
 }

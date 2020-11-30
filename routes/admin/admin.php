@@ -8,3 +8,5 @@ Route::get('/index', 'Admin\DashboardController@index')->name('admin.index');
 include __DIR__ . './user.php';
 /* rutas de los productos */
 include __DIR__ . './product.php';
+/* rutas de los tag */
+include __DIR__ . './tag.php';
