@@ -19,8 +19,8 @@
 				      <th scope="row">{{ $tag->id }}</th>
 				      <td>{{ $tag->name }}</td>
 				      <td>
-				      	<a href="#" class="btn btn-warning"><li class="fas fa-eye"></li></a>
-				      	<a href="#" class="btn btn-danger"><li class="fas fa-trash"></li></a>
+				      	@include('admin.tag.partials.modal_update')
+				      	@include('admin.tag.partials.modal_delete')
 				      </td>
 				    </tr>
 				@endforeach

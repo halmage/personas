@@ -17,6 +17,9 @@
 	    	<div class="col-md-4">
 	    		<p class="lead">Nombre: {{ $product->name }}</p>
 	    	</div>	    	
+	    	<div class="col-md-5">
+	    		<p class="lead">tag: {{ $product->tags()->pluck('name')->implode(' | ') }}</p>
+	    	</div>	
 	    	<div class="w-100"></div>
 	    	<div class="offset-4 mt-4">
 	    		<a href="{{ route('product.index') }}" class="btn btn-lg btn-dark">volver</a>

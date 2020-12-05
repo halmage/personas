@@ -2,7 +2,7 @@
 
 @section('content')
 	@component('components._card-xl')
-		@slot('title', 'crear usuario')
+		@slot('title', 'crear producto')
 		 <form method="POST" action="{{ route('product.store') }}" novalidate enctype="multipart/form-data">
             @csrf
             <div class="row ml-5">
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="name">{{ __('Name') }}</label>
+                    <label for="name">{{ __('Nombre') }}</label>
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                     @error('name')
@@ -27,7 +27,14 @@
                     @enderror
                 </div>  
 
-                <div class="w-100"></div>
+                <div class="form-group">
+                    <label>Eliga un tag</label> 
+                    <select class="form-control" name="tags[]" id="name" multiple>
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>                    
+                </div>
 
                 <div class="form-group col-md-4">
                     <label for="image">{{ __('Ingrese imagen') }}</label>
@@ -46,7 +53,7 @@
                 		{{ __('Cancelar') }}
                 	</a>
                     <button type="submit" class="btn btn-lg btn-primary">
-                        {{ __('Register') }}
+                        {{ __('Registrar') }}
                     </button>
                 </div>
             </div>

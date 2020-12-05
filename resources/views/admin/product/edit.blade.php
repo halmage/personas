@@ -28,6 +28,15 @@
                     @enderror
                 </div>  
 
+                <div class="form-group col-md-4">
+                    <label>Eliga un tag</label>                     
+                    @foreach($tags as $tag)
+                        <div class="w-100"></div>
+                        <input type="checkbox" name="tag[]" id="tag" value="{{ $tag->id }}"> {{ $tag->name }}
+
+                    @endforeach                  
+                </div>
+
                 <div class="w-100"></div>
 
                 <div class="form-group col-md-4">

@@ -22,11 +22,12 @@ class ProductRepositories implements ProductInterface{
 
 	/* Registrando usuarios */
 	public function createdProduct($request){
-		Product::create([
+		$product = Product::create([
 			'image' => self::imageStore($request),
 			'code' => $request->code,
 			'name' => $request->name
 		]);
+		$product->tags()->sync($request->tags);
 	}
 
 	public function imageUpdate($product,$request)
@@ -48,5 +49,7 @@ class ProductRepositories implements ProductInterface{
 			'code' => $request->code,
 			'name' => $request->name
 		]);
+
+		$product->tags()->sync($request->tags);
 	}
 }

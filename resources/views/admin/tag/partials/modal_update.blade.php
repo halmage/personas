@@ -1,10 +1,13 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mb-2 float-right" data-toggle="modal" data-target="#modal-create">
-  + crear tag
+<button type="button" 
+        class="btn btn-warning" 
+        data-toggle="modal" 
+        data-target="#modal-update-{{ $tag->id }}">
+  <li class="fas fa-edit"></li>
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="modal-create" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modal-update-{{ $tag->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,15 +17,16 @@
         </button>
       </div>
       <div class="modal-body">
-      	<form action="{{ route('tag.store') }}" method="POST" id="form-create">          
+      	<form action="{{ route('tag.update',$tag) }}" method="POST" id="form-update-{{ $tag->id }}">
             @csrf
+            @method('PUT')
             <div class="form-group">
               <label for="name">Ingrese nombre del tag</label>
               <input type="text" 
                      id="name"
                      name="name" 
                      class="form-control @error('name') is-invalid @enderror"
-                     placeholder="Ingrese nombre del tag" 
+                     value="{{ $tag->name }}" 
               >
               @error('name')
                   <span class="invalid-feedback" role="alert">
@@ -34,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">&times Close</button>
-        <button type="submit" class="btn btn-primary" form="form-create"><li class="far fa-bookmark"></li> Crear </button>
+        <button type="submit" class="btn btn-warning" form="form-update-{{ $tag->id }}"><li class="fas fa-edit"></li> Actualizar </button>
       </div>
     </div>
   </div>
