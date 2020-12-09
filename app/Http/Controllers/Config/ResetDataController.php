@@ -22,7 +22,11 @@ class ResetDataController extends Controller
     }
 
     public function resetData(){
-    	return view('config.reset-data',['user' => $this->user->findUser()]);
+        switch(Auth::user()->roles()->first()->name){
+           case 'admin':
+    	       return view('admin.config.reset-data',['user' => $this->user->findUser()]);
+                                break;
+        }
     }
 
     public function resetDataRestored(ResetDataRequest $request){

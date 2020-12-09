@@ -22,8 +22,12 @@ class ResetQuestionController extends Controller
         $this->question = $question;
     }
 
-    public function resetQuestion(){
-    	return view("config.reset-question",['questions' => $this->question->allQuestions()]);
+    public function resetQuestion(){    	
+        switch(Auth::user()->roles()->first()->name){
+           case 'admin':
+               return view("admin.config.reset-question",['questions' => $this->question->allQuestions()]);
+                                break;
+        }
     }
 
     public function resetQuestionRestored(ResetQuestionRequest $request){

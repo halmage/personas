@@ -20,11 +20,11 @@ class ProductSeeder extends Seeder
         Product::create([
                 	'code' => '00002',
                 	'name' => 'blusa'
-                ]);
+                ]);        
 
         Product::create([
                 	'code' => '00003',
                 	'name' => 'balon'
-                ]);
+                ]);        
     }
 }

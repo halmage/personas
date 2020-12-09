@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
     {
         Role::truncate();
 
-        $adminRole = Role::create(['name' => 'admin']);
         $userRole = Role::create(['name' => 'user']);
+        $adminRole = Role::create(['name' => 'admin']);
 
         $admin = new User();
         $admin->identify = '24130237'; 
@@ -29,6 +29,15 @@ class UserSeeder extends Seeder
         $admin->save();
         $admin->assignRole($adminRole);
 
-        factory(User::class,10)->create();
+        $user = new User();
+        $user->identify = '24130238'; 
+        $user->name = 'Halmage'; 
+        $user->last_name = 'Cesilia'; 
+        $user->email = 'halmagedecesilia@gmail.com'; 
+        $user->password = bcrypt('12345678'); 
+        $user->save();
+        $user->assignRole($userRole);
+
+       factory(User::class,10)->create();
     }
 }

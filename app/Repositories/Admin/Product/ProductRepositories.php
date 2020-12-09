@@ -49,7 +49,6 @@ class ProductRepositories implements ProductInterface{
 			'code' => $request->code,
 			'name' => $request->name
 		]);
-
 		$product->tags()->sync($request->tags);
 	}
 }

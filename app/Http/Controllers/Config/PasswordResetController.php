@@ -22,8 +22,12 @@ class PasswordResetController extends Controller
     }
 
     /* vista de configuracion de restablecimiento de contraseña */
-    public function passwordReset(){
-    	return view('config.password-reset');
+    public function passwordReset(){    	
+        switch(Auth::user()->roles()->first()->name){
+           case 'admin':
+               return view('admin.config.password-reset');
+                                break;
+        }
     }   
 
     /* Restaurando la contraseña */

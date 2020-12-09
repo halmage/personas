@@ -53,7 +53,7 @@ class UserRepositories implements UserInterface{
 	}
 
 	public function avatarUpdate($user,$request)
-    {
+    {    	
         if (!empty($request->file('avatar'))) {
             $avatar = Storage::url($request->file('avatar')->store('avatar','public')); 
             $image_path = str_replace('storage', 'public', $user->avatar);

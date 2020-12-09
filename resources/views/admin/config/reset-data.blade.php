@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin-layout')
 
 @section('content')
 	@component('components._card-xl')
 		@slot('title','restablecer contraseña')
-			<form action="{{ route('config.reset-data-restored') }}" method="POST" novalidate>
+			<form action="{{ route('config.reset-data-restored') }}" method="POST" enctype="multipart/form-data" novalidate>
 				@csrf
 				<div class="form-group col-4 offset-4">
 					<label for="password_old" class="text-uppercase lead">Ingrese contraseña antigua</label>

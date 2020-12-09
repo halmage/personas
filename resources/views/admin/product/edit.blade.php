@@ -29,10 +29,9 @@
                 </div>  
 
                 <div class="form-group col-md-4">
-                    <label>Eliga un tag</label>                     
+                    <label>Eliga tags</label>                     
                     @foreach($tags as $tag)
-                        <div class="w-100"></div>
-                        <input type="checkbox" name="tag[]" id="tag" value="{{ $tag->id }}"> {{ $tag->name }}
+                        <div class="w-100"></div>                        <input type="checkbox" name="tags[]" id="tags" value="{{ $tag->id }}"> {{ $tag->name }}
 
                     @endforeach                  
                 </div>
@@ -40,7 +39,7 @@
                 <div class="w-100"></div>
 
                 <div class="form-group col-md-4">
-                    <label for="image">{{ __('Ingrese imagen') }}</label>
+                   <label for="image">{{ __('Ingrese imagen') }}</label>
                     <div class="w-100"></div> 
                     <img src="{{ $product->image == null ? asset('img/warning/no-hay-foto.jpg') : 
                              $product->image }}" class="mb-2 img-thumbnail" width="100" height="100">
@@ -48,7 +47,7 @@
                     @error('image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
-                        </span>
+                        </span>gdfgdf
                     @enderror
                 </div>           
             </div>

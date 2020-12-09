@@ -3,6 +3,7 @@
 namespace App\Repositories\Config;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 /* Importando modelos */
 use App\Models\Question;
@@ -19,9 +20,23 @@ class ConfigRepositories implements ConfigInterface{
 		return auth::user()->update([ 'password' => bcrypt($request->input('password')) ]);
 	}
 
+	public function avatarUpdate($user,$request)
+    {    	
+        if (!empty($request->file('avatar'))) {
+            $avatar = Storage::url($request->file('avatar')->store('avatar','public')); 
+            $image_path = str_replace('storage', 'public', $user->avatar);
+            Storage::delete($image_path);
+        }else {
+            $avatar = $user->avatar;
+        }
+        return $avatar;
+    }
+
 	/* restaurar datos */
 	public function updatedData($request){
-		return auth::user()->update([ 'identify' => $request->input('identify'),
+		return auth::user()->update([ 
+									   'avatar' => self::avatarUpdate(auth::user(),$request),
+									   'identify' => $request->input('identify'),
 	                                   'name' => $request->input('name'),
 	                                   'last_name' => $request->input('last_name'),
 	                                   'email' => $request->input('email')

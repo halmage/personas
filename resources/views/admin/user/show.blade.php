@@ -19,12 +19,9 @@
 	    	</div>
 	    	<div class="col-md-4">
 	    		<p class="lead">Apellido: {{ $user->last_name }}</p>
-	    	</div>	  
-	    	<div class="col-md-4">
-		    	<p class="lead">Apellido: {{ $user->last_name }}</p>
-	    	</div>	    	
+	    	</div>		
 	    	<div class="col-md-8">
-    			<p class="lead">Apellido: {{ $user->email }}</p>
+    			<p class="lead">Correo: {{ $user->email }}</p>
 	    	</div>
 	    	<div class="col-md-4">
 	    		<p class="lead">Tipo: {{ $user->roles()->pluck('name')->implode(', ') }}</p>
