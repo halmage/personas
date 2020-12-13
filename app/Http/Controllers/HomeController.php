@@ -28,7 +28,10 @@ class HomeController extends Controller
             case 'admin':
                 return redirect()->route('admin.index');
                         break;
+
+            case 'user':
+                return redirect()->route('user.index');
+                        break;
         }
-        return view('home');
     }
 }
