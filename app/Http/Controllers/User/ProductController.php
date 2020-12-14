@@ -9,10 +9,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 
 class ProductController extends Controller
-{
-    
+{    
 	public function index(){
 		return view('user.product.index', ['products' => Product::all()]);
 	}
 
+	public function show(Product $product){
+		return view('user.product.show',['product' => $product]);
+	}
 }
