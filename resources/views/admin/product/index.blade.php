@@ -4,7 +4,7 @@
 	
 	@component('components._card-xl')
 		@slot('title','administración de productos')
-		<a href="{{ route('product.create') }}" class="btn btn-primary mb-2 float-right"> + crear producto</a>
+		<a href="{{ route('admin-product.create') }}" class="btn btn-primary mb-2 float-right"> + crear producto</a>
 		<table class="table table-bordered">
 		  <thead>
 		    <tr>
@@ -23,8 +23,8 @@
 				      <td>{{ $product->name }}</td>
 				      <td>{{ $product->tags()->pluck('name')->implode(' | ') }}</td>
 				      <td>
-				      	<a href="{{ route('product.show',$product) }}" class="btn btn-primary"><li class="fas fa-eye"></li></a>
-				      	<a href="{{ route('product.edit',$product) }}" class="btn btn-warning"><li class="fas fa-edit"></li></a>
+				      	<a href="{{ route('admin-product.show',$product) }}" class="btn btn-primary"><li class="fas fa-eye"></li></a>
+				      	<a href="{{ route('admin-product.edit',$product) }}" class="btn btn-warning"><li class="fas fa-edit"></li></a>
 				      	@include('admin.product.partials.modal_delete')
 				      </td>
 				    </tr>

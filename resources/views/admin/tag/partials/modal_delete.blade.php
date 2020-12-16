@@ -20,7 +20,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">&times Close</button>
-        <form action="{{ route('tag.destroy',$tag) }}" method="POST" id="form-delete-{{ $tag->id }}">
+        <form action="{{ route('admin-tag.destroy',$tag) }}" method="POST" id="form-delete-{{ $tag->id }}">
         	@method('DELETE')
         	@csrf
         </form>

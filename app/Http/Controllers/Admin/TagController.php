@@ -20,16 +20,16 @@ class TagController extends Controller
 
     public function store(TagRequest $request){
     	Tag::create($request->all());
-    	return redirect()->route('tag.index');
+    	return redirect()->route('admin-tag.index');
     }
 
     public function destroy(Tag $tag){
     	$tag->delete();
-    	return redirect()->route('tag.index');
+    	return redirect()->route('admin-tag.index');
     }
 
     public function update(Tag $tag, TagUpdateRequest $request){
         $tag->update($request->all());
-        return redirect()->route('tag.index');   
+        return redirect()->route('admin-tag.index');   
     }
 }

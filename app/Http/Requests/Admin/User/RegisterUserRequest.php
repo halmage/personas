@@ -35,7 +35,8 @@ class RegisterUserRequest extends FormRequest
           "question3" => 'required|string',
           "answer1" => 'required|string|max:255',
           "answer2" => 'required|string|max:255',
-          "answer3" => 'required|string|max:255'
+          "answer3" => 'required|string|max:255',
+          "roles" => ''
         ];
     }
 }

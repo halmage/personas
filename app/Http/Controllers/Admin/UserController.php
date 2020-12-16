@@ -40,8 +40,7 @@ class UserController extends Controller
                  ]);
     }
 
-    public function store(Request $request){
-        dd($request->all());
+    public function store(RegisterUserRequest $request){
     	$this->user->createdUser($request);
     	return redirect()->route('admin-user.index');
     }

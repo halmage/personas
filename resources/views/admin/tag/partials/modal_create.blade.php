@@ -14,7 +14,7 @@
         </button>
       </div>
       <div class="modal-body">
-      	<form action="{{ route('tag.store') }}" method="POST" id="form-create">          
+      	<form action="{{ route('admin-tag.store') }}" method="POST" id="form-create">          
             @csrf
             <div class="form-group">
               <label for="name">Ingrese nombre del tag</label>

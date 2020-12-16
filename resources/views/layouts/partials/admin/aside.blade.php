@@ -40,13 +40,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('product.index') }}" class="nav-link {{ Route::currentRouteName() == 'product.index' ? 'active' : '' }}">
+              <a href="{{ route('admin-product.index') }}" class="nav-link {{ Route::currentRouteName() == 'admin-product.index' ? 'active' : '' }}">
                 <i class="fas fa-cubes nav-icon"></i>
                 <p>Productos</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('tag.index') }}" class="nav-link {{ Route::currentRouteName() == 'tag.index' ? 'active' : '' }}">
+              <a href="{{ route('admin-tag.index') }}" class="nav-link {{ Route::currentRouteName() == 'tag.index' ? 'active' : '' }}">
                 <i class="far fa-bookmark nav-icon"></i>
                 <p>Tags</p>
               </a>

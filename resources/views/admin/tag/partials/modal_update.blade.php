@@ -17,7 +17,7 @@
         </button>
       </div>
       <div class="modal-body">
-      	<form action="{{ route('tag.update',$tag) }}" method="POST" id="form-update-{{ $tag->id }}">
+      	<form action="{{ route('admin-tag.update',$tag) }}" method="POST" id="form-update-{{ $tag->id }}">
             @csrf
             @method('PUT')
             <div class="form-group">

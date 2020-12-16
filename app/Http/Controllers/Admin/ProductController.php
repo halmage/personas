@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
     	$this->product->createdProduct($request);
-    	return redirect()->route('product.index');
+    	return redirect()->route('admin-product.index');
     }
 
     public function show(Product $product)
@@ -48,7 +48,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('product.index');
+        return redirect()->route('admin-product.index');
     }
 
     public function edit(Product $product)
@@ -61,6 +61,6 @@ class ProductController extends Controller
     public function updated(Product $product, Request $request)
     {
         $this->product->updated($product,$request);
-        return redirect()->route('product.index');
+        return redirect()->route('admin-product.index');
     }
 }

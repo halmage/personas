@@ -3,7 +3,7 @@
 @section('content')
 	@component('components._card-xl')
 		@slot('title', 'editar producto')
-		 <form method="POST" action="{{ route('product.updated',$product) }}" novalidate enctype="multipart/form-data">
+		 <form method="POST" action="{{ route('admin-product.updated',$product) }}" novalidate enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row d-flex justify-content-lg-between">
@@ -79,7 +79,7 @@
 
                     <div class="form-group col-md-12 mt-4">
                         <div class="d-flex justify-content-center">
-                            <a href="{{ route('product.index') }}" class="btn btn-lg btn-dark mx-2">
+                            <a href="{{ route('admin-product.index') }}" class="btn btn-lg btn-dark mx-2">
                                 {{ __('Cancelar') }}
                             </a>
                             <button type="submit" class="btn btn-lg btn-primary">
