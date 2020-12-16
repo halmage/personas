@@ -28,7 +28,7 @@
 	    	</div>
 	    	<div class="w-100"></div>
 	    	<div class="offset-4 mt-4">
-	    		<a href="{{ route('user.index') }}" class="btn btn-lg btn-dark">volver</a>
+	    		<a href="{{ route('admin-user.index') }}" class="btn btn-lg btn-dark">volver</a>
 	    	</div>
 		</div>
 	@endcomponent

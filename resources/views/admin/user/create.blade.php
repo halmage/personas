@@ -3,7 +3,7 @@
 @section('content')
 	@component('components._card-xl')
 		@slot('title', 'crear usuario')
-		 <form method="POST" action="{{ route('user.store') }}" novalidate enctype="multipart/form-data">
+		 <form method="POST" action="{{ route('admin-user.store') }}" novalidate enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="form-group col-md-4">
@@ -160,7 +160,7 @@
             
             <div class="form-group">
                 <div class="d-flex justify-content-center">
-                	<a href="{{ route('user.index') }}" class="btn btn-lg btn-dark mx-2">
+                	<a href="{{ route('admin-user.index') }}" class="btn btn-lg btn-dark mx-2">
                 		{{ __('Cancelar') }}
                 	</a>
                     <button type="submit" class="btn btn-lg btn-primary">

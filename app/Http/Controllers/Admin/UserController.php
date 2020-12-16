@@ -40,14 +40,15 @@ class UserController extends Controller
                  ]);
     }
 
-    public function store(RegisterUserRequest $request){
+    public function store(Request $request){
+        dd($request->all());
     	$this->user->createdUser($request);
-    	return redirect()->route('user.index');
+    	return redirect()->route('admin-user.index');
     }
 
     public function destroy(user $user){
         $user->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('admin-user.index');
     }
 
     public function edit(user $user){
@@ -59,6 +60,6 @@ class UserController extends Controller
 
     public function updated(user $user, Request $request){
         $this->user->update($user,$request);
-        return redirect()->route('user.index');
+        return redirect()->route('admin-user.index');
     }
 }

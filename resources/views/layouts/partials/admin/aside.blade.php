@@ -34,7 +34,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('user.index') }}" class="nav-link  {{ Route::currentRouteName() == 'user.index' ? 'active' : '' }}">
+              <a href="{{ route('admin-user.index') }}" class="nav-link  {{ Route::currentRouteName() == 'admin-user.index' ? 'active' : '' }}">
                 <i class="fas fa-users nav-icon"></i>
                 <p>Usuarios</p>
               </a>

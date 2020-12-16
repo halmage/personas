@@ -23,7 +23,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">&times Close</button>
-        <form action="{{ route('user.destroy',$user) }}" method="POST" id="form-delete-{{ $user->id }}">
+        <form action="{{ route('admin-user.destroy',$user) }}" method="POST" id="form-delete-{{ $user->id }}">
         	@method('DELETE')
         	@csrf
         </form>

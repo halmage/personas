@@ -25,7 +25,8 @@ class ProductRepositories implements ProductInterface{
 		$product = Product::create([
 			'image' => self::imageStore($request),
 			'code' => $request->code,
-			'name' => $request->name
+			'name' => $request->name,
+			'content' => $request->content
 		]);
 		$product->tags()->sync($request->tags);
 	}
@@ -47,7 +48,8 @@ class ProductRepositories implements ProductInterface{
 		$product->update([
 			'image' => self::imageUpdate($product,$request),
 			'code' => $request->code,
-			'name' => $request->name
+			'name' => $request->name,
+			'content' => $request->content
 		]);
 		$product->tags()->sync($request->tags);
 	}
